@@ -1,0 +1,21 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply font-poppins text-gray-800 bg-white; }
+}
+
+@layer utilities {
+  /* Hero background images from your HTML */
+  .hero-image-home {
+    background-image: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), url("http://static.photos/travel/1200x630/42");
+  }
+  .hero-image-list {
+    background-image: url("http://static.photos/travel/1200x630/8");
+    background-size: cover;
+    background-position: center;
+  }
+  .pulse:hover { animation: pulseScale 1.5s infinite; }
+}
