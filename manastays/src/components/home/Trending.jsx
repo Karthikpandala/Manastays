@@ -1,4 +1,6 @@
-﻿import React from "react";
+﻿// src/components/home/Trending.jsx  (replace only the <a> with <Link>)
+import React from "react";
+import { Link } from "react-router-dom";
 import { Heart, Users, Home as HomeIcon, Droplet } from "react-feather";
 import SectionTitle from "../common/SectionTitle.jsx";
 import { properties } from "../../data/properties.js";
@@ -7,7 +9,7 @@ function PropertyCard({ p }) {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
       <div className="relative">
-        <img src={p.img} alt={p.title} className="w-full h-48 object-cover" />
+        <img src={(p.photos && p.photos[0]) || p.img} alt={p.title} className="w-full h-48 object-cover" />
         <div className="absolute top-3 right-3">
           <button className="bg-white p-2 rounded-full shadow-md hover:text-primary"><Heart size={18} /></button>
         </div>
@@ -28,7 +30,7 @@ function PropertyCard({ p }) {
             <span className="font-bold text-primary">₹{p.price.toLocaleString()}</span>
             <span className="text-gray-500 text-sm">/ night</span>
           </div>
-          <a href={p.href} className="text-primary hover:underline">View </a>
+          <Link to={`/villas/${p.id}`} className="text-primary hover:underline">View →</Link>
         </div>
       </div>
     </div>
@@ -40,7 +42,7 @@ export default function Trending() {
     <section className="py-16 container px-4">
       <div className="flex justify-between items-center mb-8">
         <SectionTitle title="Trending Properties" />
-        <a href="/?page=explore" className="text-primary hover:underline">View All</a>
+        <Link to="/explore" className="text-primary hover:underline">View All</Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {properties.map(p => <PropertyCard key={p.id} p={p} />)}

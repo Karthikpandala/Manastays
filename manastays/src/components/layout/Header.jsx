@@ -1,9 +1,11 @@
-﻿import React, { useState } from "react";
+﻿// src/components/layout/Header.jsx  (only the <nav> links and View All button usage depend on this)
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Phone, User, Menu } from "react-feather";
 import Button from "../common/Button.jsx";
 import AuthModal from "../common/AuthModal.jsx";
 
-export default function Header({ variant="home" }) {
+export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
 
@@ -12,14 +14,14 @@ export default function Header({ variant="home" }) {
       <header className="sticky top-0 z-50 bg-white shadow-md">
         <div className="container px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <a href="/" className="text-2xl font-bold text-primary">Manastays.com</a>
+            <Link to="/" className="text-2xl font-bold text-primary">Manastays.com</Link>
             <span className="text-xs text-gray-500 hidden md:block">Find Your Perfect Escape</span>
           </div>
 
           <nav className="hidden md:flex gap-8">
-            <a href="/?page=exclusive" className="font-medium hover:text-primary transition">EXCLUSIVE</a>
-            <a href="/?page=explore" className="font-medium hover:text-primary transition">EXPLORE</a>
-            <a href="/?page=list" className="font-medium hover:text-primary transition">List Your Property</a>
+            <Link to="/exclusive" className="font-medium hover:text-primary transition">EXCLUSIVE</Link>
+            <Link to="/explore" className="font-medium hover:text-primary transition">EXPLORE</Link>
+            <Link to="/list" className="font-medium hover:text-primary transition">List Your Property</Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -34,9 +36,9 @@ export default function Header({ variant="home" }) {
         {mobileOpen && (
           <div className="md:hidden bg-white py-2 px-4 shadow-lg">
             <div className="flex flex-col gap-3">
-              <a href="/?page=exclusive" className="font-medium hover:text-primary transition">EXCLUSIVE</a>
-              <a href="/?page=explore" className="font-medium hover:text-primary transition">EXPLORE</a>
-              <a href="/?page=list" className="font-medium hover:text-primary transition">List Your Property</a>
+              <Link to="/exclusive" className="font-medium hover:text-primary transition">EXCLUSIVE</Link>
+              <Link to="/explore" className="font-medium hover:text-primary transition">EXPLORE</Link>
+              <Link to="/list" className="font-medium hover:text-primary transition">List Your Property</Link>
               <a href="/#contact" className="font-medium flex items-center gap-2 hover:text-primary transition">
                 <Phone size={16} /><span>+91 8367262873</span>
               </a>
